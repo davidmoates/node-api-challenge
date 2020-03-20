@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const project = require('../data/helpers/projectModel.js');
-const action = require('../data/helpers/actionModel.js');
+
 
 router.get('/', (req, res, next) => {
   project.get()
@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
 
-  const {id} = req.params
+  const { id } = req.params
 
   project.get(id)
     .then(stuff => {
@@ -44,7 +44,7 @@ router.delete('/:id', validateProjectID, (req, res, next) => {
 
 router.put('/:id', validateProjectID, (req, res, next) => {
   const info = req.body
-  const {id} = req.params
+  const { id } = req.params
 
   project.update(id, info)
   .then(stuff => {
@@ -54,7 +54,7 @@ router.put('/:id', validateProjectID, (req, res, next) => {
 })
 
 function validateProjectID(req, res, next) {
-  const {id} = req.params
+  const { id } = req.params
   project.get(id)
   .then(stuff => {
     if (stuff) {
