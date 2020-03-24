@@ -49,7 +49,7 @@ router.put('/:id/actions/:actionID', validateProjectID, (req, res, next) => {
 
 function validateProjectID(req, res, next) {
   const {id} = req.params
-  actions.get(id)
+  action.get(id)
   .then(stuff => {
     if (stuff) {
       req.stuff = stuff
